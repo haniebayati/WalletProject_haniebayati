@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمایش لیست تراکنش ها</title>
+    <link rel="stylesheet" href="css/Account.css">
+</head>
+<body>
+    <div class="container">
+        <div id="result"></div> 
+    </div>
+
+    <script>
+        // Retrieve the account data from session storage
+        const accountData = JSON.parse(sessionStorage.getItem('requestData'));
+        
+        const TransactionType = {
+            DEPOSIT: 'واریز',
+            WITHDRAW: 'برداشت'
+        };
+
+        if (accountData && Array.isArray(accountData)) {
+            // Create a formatted output for multiple transactions
+            let resultHtml = '<h3>لیست تراکنش ها به شرح زیر است</h3>';
+
+            accountData.forEach((invoice, index) => {
+                resultHtml += `
+                    <div style="border: 1px solid #ddd; margin: 10px 0; padding: 10px;">
+                        <h4>تراکنش ${index + 1}</h4>
+                        <p style="font-size: 15px;"><strong>مبلغ (تومان)</strong></p>
+                        <p style="font-size: 15px;">${invoice.amount}</p>
+
+                        <p style="font-size: 15px;"><strong>نوع پرداخت</strong></p>
+                        <p style="font-size: 15px;">${invoice.description === 'Diposit' ? TransactionType.DEPOSIT : TransactionType.WITHDRAW}</p>
+
+                        <p style="font-size: 15px;"><strong>تاریخ پرداخت</strong></p>
+                        <p style="font-size: 15px;">${invoice.invoiceDate}</p>
+
+                        <p style="font-size: 15px;"><strong>کارمزد (تومان)</strong></p>
+                        <p style="font-size: 15px;">${invoice.fee}</p>
+                    </div>
+                `;
+            });
+
+            // Display the formatted result in the result div
+            document.getElementById("result").innerHTML = resultHtml;
+        } else {
+            document.getElementById("result").innerHTML = '<p>خطا در بارگذاری داده‌ها.</p>';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمایش حساب‌های کاربر</title>
+    <link rel="stylesheet" href="css/Account.css">
+</head>
+<body>
+    <div class="container">
+        <div id="result">
+        </div> 
+    </div>
+
+    <script>
+        // Retrieve the account data from session storage
+        const accountData = JSON.parse(sessionStorage.getItem('accountData'));
+        console.log(accountData);
+
+        if (accountData && accountData.length > 0) {
+            // Create a formatted output for multiple accounts
+            let resultHtml = '<h3>اطلاعات حساب‌های کاربر به شرح زیر است</h3>';
+
+            // Iterate over the array of accounts and generate HTML for each account
+            accountData.forEach((account, index) => {
+                resultHtml += `
+                    <div style="border: 1px solid #ddd; margin: 10px 0; padding: 10px;">
+                        <h4>حساب شماره ${index + 1}</h4>
+                        <p style="font-size: 15px;"><strong>شماره حساب</strong></p>
+                        <p style="font-size: 15px;">${account.account_number}</p>
+
+                        <p style="font-size: 15px;"><strong>شماره شبا</strong></p>
+                        <p style="font-size: 15px;">${account.iban}</p>
+
+                        <p style="font-size: 15px;"><strong>موجودی حساب (تومان)</strong></p>
+                        <p style="font-size: 15px;">${account.account_Balance}</p>
+
+                        <p style="font-size: 15px;"><strong>تاریخ ایجاد حساب</strong></p>
+                        <p style="font-size: 15px;">${account.create_Account}</p>
+                    </div>
+                `;
+            });
+
+            // Display the formatted result in the result div
+            document.getElementById("result").innerHTML = resultHtml;
+        } else {
+            document.getElementById("result").innerHTML = '<p>حسابی یافت نشد.</p>';
+        }
+    </script>
+    
+</body>
+</html>

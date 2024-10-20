@@ -1,0 +1,55 @@
+@charset "ISO-8859-1";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    direction: rtl;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+   margin-bottom: 20px; 
+}
+
+p {
+    color: #777;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.task-list {
+    list-style-type: none;
+}
+
+.task-item {
+    background-color: #3498db;
+    color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: #2980b9;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عملیات واریز و برداشت</title>
+    <link rel="stylesheet" href="css/DepositAndWithrawStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>عملیات واریز و برداشت</h1>
+
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <button type="button" onclick="showSection('withdrawForm')">برداشت</button>
+            <button type="button" onclick="showSection('depositForm')">واریز</button>
+        </nav>
+
+        <!-- Form for Deposit -->
+        <div id="depositForm" class="section" style="display: none;">
+            <h2>واریز</h2>
+            <form id="deposittForm">
+                <label for="accountType">نوع انتقال وجه:</label>
+                <select id="accountType" name="accountType">
+                	<option value="" disabled selected>--</option>
+                    <option value="accountNumber">شماره حساب</option>
+                    <option value="iban">شماره شبا</option>
+                </select>
+                
+                    <label for="accountNumber">شماره حساب / شبا:</label>
+                    <input type="text" id="accountNumber" name="accountNumber" required>
+
+                    <label for="amount">مبلغ:</label>
+                    <input type="number" id="amount" name="amount" required>
+
+                <button type="submit">واریز</button>
+            </form>
+        </div>
+
+        <!-- Form for Withdraw -->
+        <div id="withdrawForm" class="section" style="display: none;">
+            <h2>برداشت</h2>
+            <form id="withdrawwForm">
+                <label for="withdrawAccountType">نوع انتقال وجه:</label>
+                <select id="withdrawAccountType" name="withdrawAccountType">
+                    <option value="" disabled selected>--</option>
+                    <option value="accountNumber">شماره حساب</option>
+                    <option value="iban">شماره شبا</option>
+                </select>
+
+                    <label for="withdrawAccountNumber">شماره حساب / شبا:</label>
+                    <input type="text" id="withdrawAccountNumber" name="withdrawAccountNumber" required>
+
+                    <label for="withdrawAmount">مبلغ:</label>
+                    <input type="number" id="withdrawAmount" name="withdrawAmount" required>
+
+                <button type="submit">برداشت</button>
+            </form>
+        </div>
+
+        <!-- Result -->
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        // Function to show the specific section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            var sections = document.querySelectorAll(".section");
+            sections.forEach(function(section) {
+                section.style.display = "none";
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = "block";
+        }
+    </script>
+
+    <script src="javaScript/DepositAndWithraw.js"></script>
+</body>
+</html>

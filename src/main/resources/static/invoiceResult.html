@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمایش جزییات پرداخت</title>
+    <link rel="stylesheet" href="css/Account.css">
+</head>
+<body>
+    <div class="container">
+        <div id="result">
+        </div> 
+    </div>
+
+    <script>
+        // Retrieve the account data from session storage
+        const accountData = JSON.parse(sessionStorage.getItem('requestData'));
+        
+        const TransactionType = {
+                DEPOSIT: 'واریز',
+                WITHDRAW: 'برداشت'
+        };
+
+        if (accountData) {
+            // Create a formatted output string
+            const resultHtml = `
+                <h3>جزییات پرداخت به شرح زیر است</h3>
+                <p style="font-size: 15px;"><strong>مبلغ (تومان)</strong></p>
+                <p style="font-size: 15px;">${accountData.amount}</p>
+                <p style="font-size: 15px;"><strong>نوع پرداخت</strong></p>
+                <p style="font-size: 15px;">${accountData.description === 'Diposit' ? TransactionType.DEPOSIT : TransactionType.WITHDRAW}</p>
+                <p style="font-size: 15px;"><strong>تاریخ پرداخت</strong></p>
+                <p style="font-size: 15px;">${accountData.invoiceDate}</p>
+                <p style="font-size: 15px;"><strong>کارمزد (تومان)</strong></p>
+                <p style="font-size: 15px;">${accountData.fee}</p>
+            `;
+
+            // Display the formatted result in the result div
+            document.getElementById("result").innerHTML = resultHtml;
+        } else {
+            document.getElementById("result").innerHTML = '<p>خطا در بارگذاری داده‌ها.</p>';
+        }
+    </script>
+    
+</body>
+</html>

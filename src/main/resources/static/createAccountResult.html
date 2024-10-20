@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتیجه ایجاد حساب</title>
+    <link rel="stylesheet" href="css/Account.css">
+</head>
+<body>
+    <div class="container">
+        <div id="result">
+        </div> 
+
+    </div>
+
+    <script>
+        // Retrieve the account data from session storage
+        const accountData = JSON.parse(sessionStorage.getItem('accountData'));
+
+        if (accountData) {
+            // Create a formatted output string
+            const resultHtml = `
+                <h3 >حساب شما با موفقیت ایجاد شد</h3>
+                <p style="font-size: 15px;"><strong>شماره حساب</strong></p>
+                <p style="font-size: 15px;">${accountData.account_number}</p>
+                <p style="font-size: 15px;"><strong>شماره شبا</strong></p>
+                <p style="font-size: 15px;">${accountData.iban}</p>
+                <p style="font-size: 15px;"><strong>موجودی حساب (تومان)</strong></p>
+                <p style="font-size: 15px;">${accountData.account_Balance}</p>
+                <p style="font-size: 15px;"><strong>تاریخ ایجاد حساب</strong></p>
+                <p style="font-size: 15px;">${accountData.create_Account}</p>
+            `;
+
+            // Display the formatted result in the result div
+            document.getElementById("result").innerHTML = resultHtml;
+            // Reset the form
+            document.getElementById("createAccountForm").reset();
+        } else {
+            document.getElementById("result").innerHTML = '<p>خطا در بارگذاری داده ها.</p>';
+            // Reset the form
+            document.getElementById("createAccountForm").reset();
+        }
+    </script>
+    
+</body>
+</html>

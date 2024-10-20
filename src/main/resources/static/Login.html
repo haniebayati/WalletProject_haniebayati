@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/LoginStyle.css">
+</head>
+<body>
+
+<div class="section-container">
+    
+        <div class="container" id="phoneSection">
+            <h1>سامانه کیف پول الکترونیکی</h1>
+            <p>لطفا شماره تلفن همراه خود را وارد کنید.</p>
+            <input type="text" id="phone" placeholder="تلفن همراه">
+            <button id="sendCodeButton">ارسال کد تایید</button>
+        </div>
+
+        <div class="container" id="otpSection" style="display:none;">
+            <h1>سامانه کیف پول الکترونیکی</h1>
+            <p>لطفا کد تایید را وارد کنید.</p>
+            <input type="text" id="otp" placeholder="کد تایید">
+            <button id="loginButton">ورود به سامانه</button>
+        </div>
+   
+
+    <section class="section" id="message_section">
+        <div id="message" style="text-align: center"></div>
+    </section>
+</div>
+
+<script src="javaScript/Login.js"></script>
+</body>
+</html>

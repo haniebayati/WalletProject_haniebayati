@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمایش اطلاعات یک کاربر</title>
+    <link rel="stylesheet" href="css/Account.css">
+</head>
+<body>
+    <div class="container">
+        <div id="result">
+        </div> 
+
+    </div>
+
+    <script>
+        // Retrieve the account data from session storage
+        const accountData = JSON.parse(sessionStorage.getItem('accountData'));
+        console.log(accountData);
+
+        if (accountData) {
+            // Create a formatted output string
+            const resultHtml = `
+                <h3>اطلاعات کاربر به شرح زیر است</h3>
+                <p style="font-size: 15px;"><strong>کد ملی</strong></p>
+                <p style="font-size: 15px;">${accountData.national_id}</p>
+                
+                <p style="font-size: 15px;"><strong>نام</strong></p>
+                <p style="font-size: 15px;">${accountData.name}</p>
+                
+                <p style="font-size: 15px;"><strong>نام خانوادگی</strong></p>
+                <p style="font-size: 15px;">${accountData.family}</p>
+
+                <p style="font-size: 15px;"><strong>جنسیت</strong></p>
+                <p style="font-size: 15px;">${accountData.gender === 'Male' ? 'مرد' : 'زن'}</p>
+                
+                <p style="font-size: 15px;"><strong>تاریخ تولد</strong></p>
+                <p style="font-size: 15px;">${accountData.birthDate}</p>
+
+                <p style="font-size: 15px;"><strong>تلفن همراه</strong></p>
+                <p style="font-size: 15px;">${accountData.mobile}</p>
+
+                <p style="font-size: 15px;"><strong>ایمیل</strong></p>
+                <p style="font-size: 15px;">${accountData.email}</p>
+
+                <p style="font-size: 15px;"><strong>وضعیت نظام وظیفه</strong></p>
+                <p style="font-size: 15px;">${accountData.conscription ? 'مشمول' : 'غیرمشمول'}</p>
+            `;
+            // Display the formatted result in the result div
+            document.getElementById("result").innerHTML = resultHtml;
+        } else {
+            document.getElementById("result").innerHTML = '<p>خطا در بارگذاری داده ها.</p>';
+        }
+    </script>
+    
+</body>
+</html>

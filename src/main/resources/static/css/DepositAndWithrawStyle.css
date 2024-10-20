@@ -1,0 +1,91 @@
+
+@charset "ISO-8859-1";
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+input[type="text"], input[type="number"] , select , input[type="email"] , input[type="date"] {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    text-align: right;
+}
+
+input[type="checkbox"] {
+	width: 10%;	
+}
+
+form {
+	direction: rtl;
+	text-align: right;
+	margin: 20px; 
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    background-color: #f9f9f9;
+    display: grid;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    color: white; 
+    cursor: pointer; 
+    text-align: center;
+    width: 115px;
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+button[type="submit"] {
+    margin-right: 400px;
+    width: 100px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.section {
+    display: none; 
+    margin-top: 20px;
+}
+
+#result {
+    margin-top: 20px;
+    color: #333;
+}
+
+
+
+
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عملیات مربوط به حساب ها</title>
+    <link rel="stylesheet" href="css/Account.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>عملیات مربوط به حساب ها</h1>
+
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <button type="button" onclick="showSection('deleteAccount')">حذف حساب</button>
+            <button type="button" onclick="showSection('updateAccount')">به روز رسانی حساب</button>
+       <!--     <button type="button" onclick="showSection('getAllAccounts')">مشاهده همه حساب ها</button> -->
+            <button type="button" onclick="showSection('viewAccount')">مشاهده حساب</button>
+            <button type="button" onclick="showSection('createAccount')">ایجاد حساب جدید</button>
+        </nav>
+
+        <!-- Create Account Section -->
+        <div id="createAccount" class="section" style="display:none;">
+            <h2>ایجاد حساب جدید</h2>
+            
+            <form id="createAccountForm">
+            <label for="national_id">کد ملی:</label>
+            <input type="text" id="national_id" placeholder="" required pattern="^\d{10}$">
+
+            <label for="name">نام:</label>
+            <input type="text" id="name" placeholder="" required>
+
+            <label for="family">نام خانوادگی:</label>
+            <input type="text" id="family" placeholder="" required>
+
+            <label for="gender">جنسیت:</label>
+            <select id="gender" required>
+            	<option value="" disabled selected>--</option>
+                <option value="MALE">مرد</option>
+                <option value="FEMALE">زن</option>
+            </select>
+
+            <label for="mobile">تلفن همراه:</label>
+            <input type="text" id="mobile" placeholder="">
+
+            <label for="email">ایمیل:</label>
+            <input type="email" id="email" placeholder="" required>
+
+            <label for="birthDate">تاریخ تولد:</label>
+            <input type="date" id="birthDate" required>
+
+			<div class="input-group">
+            <label for="conscription" style="padding-top:15px; display: inline-block;">وضعیت سربازی(اختیاری):</label>
+            <input type="checkbox" id="conscription" style="display: inline-block;">
+            </div>
+
+                <button type="submit">ایجاد حساب</button>
+            </form>
+        </div>
+
+        <!-- Delete Account Section -->
+        <div id="deleteAccount" class="section" style="display:none;">
+            <h2>حذف حساب</h2>
+            <form id="deleteAccountForm">
+                <label for="delete_account_number">شماره حساب:</label>
+                <input type="text" id="delete_account_number" placeholder="" required>
+                
+                <button type="submit">حذف حساب</button>
+            </form>
+        </div>
+
+        <!-- Update Account Section -->
+        <div id="updateAccount" class="section" style="display:none;">
+            <h2>به روز رسانی حساب</h2>
+            <form id="updateAccountForm">
+                <label for="update_account_number">شماره حساب:</label>
+                <input type="text" id="update_account_number" placeholder="" required>
+				<p>لطفا اطلاعات به روز رسانی شده خود را وارد کنید.</p>
+            <label for="national_id">کد ملی:</label>
+            <input type="text" id="update_national_id" placeholder="">
+
+            <label for="name">نام:</label>
+            <input type="text" id="update_name" placeholder="" required>
+
+            <label for="family">نام خانوادگی:</label>
+            <input type="text" id="update_family" placeholder="" required>
+
+            <label for="gender">جنسیت:</label>
+            <select id="update_gender" required>
+            	<option value="" disabled selected>--</option>
+                <option value="MALE">مرد</option>
+                <option value="FEMALE">زن</option>
+            </select>
+
+            <label for="mobile">تلفن همراه:</label>
+            <input type="text" id="update_mobile" placeholder="">
+
+            <label for="email">ایمیل:</label>
+            <input type="email" id="update_email" placeholder="" required>
+
+            <label for="birthDate">تاریخ تولد:</label>
+            <input type="date" id="update_birthDate" required>
+
+			<div class="input-group">
+            <label for="conscription" style="padding-top:15px; display: inline-block;">وضعیت سربازی(اختیاری):</label>
+            <input type="checkbox" id="update_conscription" style="display: inline-block;">
+            </div>
+                
+                <button type="submit">به روز رسانی</button>
+            </form>
+        </div>
+
+        <!-- View Account Section -->
+        <div id="viewAccount" class="section" style="display:none;">
+            <h2>مشاهده حساب</h2>
+            <form id="viewAccountForm">
+                <label for="view_account_number">شماره حساب:</label>
+                <input type="text" id="view_account_number" placeholder="" required>
+
+                <button type="submit">مشاهده حساب</button>
+            </form>
+        </div>
+
+        <!-- Get All Accounts Section -->
+    <!--    <div id="getAllAccounts" class="section" style="display:none;">
+            <h2>مشاهده همه حساب ها</h2>
+            <div id="allAccountsResult"></div>
+        </div>   -->
+
+        <!-- Result display -->
+        <div id="result"></div>
+    </div>
+    
+        <script>
+        // Function to show the specific section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            var sections = document.querySelectorAll(".section");
+            sections.forEach(function(section) {
+                section.style.display = "none";
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = "block";
+        }
+    </script>
+
+    <script src="javaScript/Account.js"></script>
+</body>
+</html>
